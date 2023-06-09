@@ -18,6 +18,7 @@
         echo "<th>Nombre</th>";
         echo "<th>Ciudad</th>";
         echo "<th>Deporte</th>";
+        echo "<th>Descripcion</th>";
         echo "<th>Fecha de Creación</th>";
         echo "</tr>";
 

@@ -17,8 +17,8 @@ $equipos = $equipo->getAll($pdo);
             <th>Nombre</th>
             <th>Ciudad</th>
             <th>Deporte</th>
+            <th>Descripcion</th>
             <th>Fecha de Fundación</th>
-            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
