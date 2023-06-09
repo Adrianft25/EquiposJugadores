@@ -25,7 +25,7 @@ class Equipo {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Obtener un  por su ID
+    // Obtener jugadores por su ID
     public function getJugadores($pdo, $id) {
         $stmt = $pdo->prepare('SELECT * FROM jugadores WHERE equipo = ?');
         $stmt->execute([$id]);

@@ -1,3 +1,4 @@
+
 <h2>Crear Equipo</h2>
 <form id="equipoForm" method="POST" action="add.php">
     <label for="nombre">Nombre:</label>
