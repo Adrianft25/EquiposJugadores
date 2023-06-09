@@ -3,11 +3,10 @@ require_once '../equipo/config.php';
 require_once '../models/Equipo.php';
 
 $equipo = new Equipo($pdo);
-$equipos = $equipo->getAll();
+$equipos = $equipo->getAll($pdo);
 
 ?>
 
-<?php include '../equipo/header.php'; ?>
 
 <h2>Listado de Equipos</h2>
 
@@ -23,7 +22,9 @@ $equipos = $equipo->getAll();
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($equipos as $equipo) : ?>
+        <?php 
+        var_dump($equipos);
+        foreach ($equipos as $equipo) : ?>
             <tr>
                 <td><?php echo $equipo->getId(); ?></td>
                 <td><?php echo $equipo->getNombre(); ?></td>

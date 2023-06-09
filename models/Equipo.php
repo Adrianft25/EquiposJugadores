@@ -28,7 +28,7 @@ class Equipo {
     // Guardar un nuevo equipo en la base de datos
     public function save() {
         $stmt = $this->pdo->prepare('INSERT INTO equipos (id, nombre, ciudad, deporte, descripcion, fecha) VALUES (?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$this->nombre, $this->ciudad, $this->deporte, $this->fecha]);
+        $stmt->execute([$this->nombre, $this->ciudad, $this->deporte, $this->descripcion, $this->fecha]);
     }
 
     // Getters y setters

@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $ciudad = $_POST['ciudad'];
     $deporte = $_POST['deporte'];
+    $descripcion = $_POST['descripcion'];
     $fecha = $_POST['fecha'];
 
     // Crear el nuevo equipo
@@ -15,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $equipo->setNombre($nombre);
     $equipo->setCiudad($ciudad);
     $equipo->setDeporte($deporte);
+    $equipo->setDescripcion($descripcion);
     $equipo->setFecha($fecha);
     $equipo->save();
 
