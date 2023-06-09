@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-require_once 'C:\xampp\htdocs\EquiposJugadores\models\Equipo.php';
+require_once '..\models\Equipo.php';
 
 // Obtener el ID del equipo a mostrar
 $id = $_GET['id'];
@@ -9,7 +9,7 @@ $id = $_GET['id'];
 $equipo = Equipo::getById($pdo, $id);
 
 // Incluir la vista de información del equipo
-include 'C:\xampp\htdocs\EquiposJugadores\views\header.php';
-include 'C:\xampp\htdocs\EquiposJugadores\views\list.php';
-include 'C:\xampp\htdocs\EquiposJugadores\views\footer.php';
+include '..\views\header.php';
+include '..\views\list.php';
+include '..\views\footer.php';
 ?>

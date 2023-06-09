@@ -7,7 +7,7 @@ $equipos = $equipo->getAll();
 
 ?>
 
-<?php include 'header.php'; ?>
+<?php include '../equipo/header.php'; ?>
 
 <h2>Listado de Equipos</h2>
 
@@ -38,4 +38,4 @@ $equipos = $equipo->getAll();
     </tbody>
 </table>
 
-<?php include 'footer.php'; ?>
+<?php include '../views/footer.php'; ?>
