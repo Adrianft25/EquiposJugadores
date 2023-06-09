@@ -7,6 +7,7 @@ $equipos = Equipo::getAll($pdo);
 
 // Incluir las vistas
 include '..\views\header.php';
+include '..\views\add.php';
 include '..\views\list.php';
 include '..\views\footer.php';
 ?>

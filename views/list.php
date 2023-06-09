@@ -23,17 +23,14 @@ $equipos = $equipo->getAll($pdo);
     </thead>
     <tbody>
         <?php 
-        var_dump($equipos);
         foreach ($equipos as $equipo) : ?>
             <tr>
-                <td><?php echo $equipo->getId(); ?></td>
-                <td><?php echo $equipo->getNombre(); ?></td>
-                <td><?php echo $equipo->getCiudad(); ?></td>
-                <td><?php echo $equipo->getDeporte(); ?></td>
-                <td><?php echo $equipo->getFecha(); ?></td>
-                <td>
-                    <a href="view.php?id=<?php echo $equipo->getId(); ?>">Ver</a>
-                </td>
+                <td><?php echo $equipo['id']; ?></td>
+                <td><?php echo $equipo['nombre']; ?></td>
+                <td><?php echo $equipo['ciudad']; ?></td>
+                <td><?php echo $equipo['deporte']; ?></td>
+                <td><?php echo $equipo['descripcion']; ?></td>
+                <td><?php echo $equipo['fecha']; ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

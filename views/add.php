@@ -13,6 +13,9 @@
         <option value="Tenis">Tenis</option>
     </select>
 
+    <label for="descripcion">Descripcion:</label>
+    <input type="text" name="descripcion" id="descripcion">
+
     <label for="fecha">Fecha de fundación:</label>
     <input type="date" name="fecha" id="fecha" required>
 
