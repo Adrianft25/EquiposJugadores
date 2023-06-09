@@ -6,6 +6,7 @@ class Jugador {
     private $ciudad;
     private $numero;
     private $equipo;
+    private $isCapitan;
 
     public function __construct($pdo) {
         $this->pdo = $pdo;
@@ -33,16 +34,19 @@ class Jugador {
 
     // Guardar un nuevo jugador en la base de datos
     public function save() {
-        if ($this->id) {
-            // El jugador ya existe, realizar actualización
-            $stmt = $this->pdo->prepare('UPDATE jugadores SET nombre = ?, ciudad = ?, numero = ?, equipo = ? WHERE id = ?');
-            $stmt->execute([$this->nombre, $this->ciudad, $this->numero, $this->equipo, $this->id]);
-        } else {
-            // El jugador es nuevo, realizar inserción
-            $stmt = $this->pdo->prepare('INSERT INTO jugadores (nombre, ciudad, numero, equipo) VALUES (?, ?, ?, ?)');
-            $stmt->execute([$this->nombre, $this->ciudad, $this->numero, $this->equipo]);
-        }
+              // El jugador es nuevo, realizar inserción
+            $stmt = $this->pdo->prepare('INSERT INTO jugadores (nombre, ciudad, numero, equipo, isCapitan) VALUES (?, ?, ?, ?, ?)');
+            $stmt->execute([$this->nombre, $this->ciudad, $this->numero, $this->equipo, $this->isCapitan]);
+    
     }
+
+
+    //Guardar un jugador modificado
+    public function update($nombre, $ciudad, $numero) {
+        $stmt = $this->pdo->prepare('UPDATE jugadores SET nombre = ?, ciudad = ?, numero = ? WHERE id = ?');
+        $stmt->execute([$nombre, $ciudad, $numero, $this->id]);
+    }
+    
 
     // Eliminar un jugador de la base de datos por su ID
     public static function deleteById($pdo, $id) {
@@ -54,6 +58,10 @@ class Jugador {
 
     public function getId() {
         return $this->id;
+    }
+
+    public function setId($id){
+        $this->id = $id;
     }
 
     public function getNombre() {
@@ -86,6 +94,14 @@ class Jugador {
 
     public function setEquipo($equipo) {
         $this->equipo = $equipo;
+    }
+
+    public function getCapitan() {
+        return $this->isCapitan;
+    }
+
+    public function setCapitan($isCapitan) {
+        $this->isCapitan = $isCapitan;
     }
 }
 ?>
