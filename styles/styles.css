@@ -1,0 +1,41 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+thead {
+    background-color: #f2f2f2;
+  }
+  
+  thead th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+
+  }
+  
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  tbody td {
+    padding: 8px;
+  }
+  
+  tbody td:first-child {
+    border-left: 1px solid #ccc;
+  }
+  
+  tbody td:last-child {
+    border-right: 1px solid #ccc;
+  }

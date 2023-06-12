@@ -2,18 +2,9 @@
 require_once '../equipo/config.php';
 require_once '../models/Equipo.php';
 require_once '../models/Jugador.php';
-?>
 
+include '../views/header.php';
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Información del Equipo</title>
-</head>
-<body>
-    <h1>Información del Equipo</h1>
-
-    <?php
     // Obtener el ID del equipo desde la URL
     $id = $_GET['id'];
 
@@ -46,7 +37,7 @@ require_once '../models/Jugador.php';
         $nombre = $_POST['nombre'];
         $ciudad = $_POST['ciudad'];
         $numero = $_POST['numero'];
-        $capitan = isset($_POST['capitan']) ? $_POST['capitan'] : 0;
+        $capitan = isset($_POST['capitan']) ? 1 : 0;
 
         // Crear el nuevo jugador
         $j = new Jugador($pdo);
@@ -65,6 +56,8 @@ require_once '../models/Jugador.php';
 
     ?>
 
+    <h1>Información del Equipo</h1>
+
     <h2>Listado de Jugadores</h2>
 
     <h2>Crear Jugador</h2>
@@ -80,25 +73,10 @@ require_once '../models/Jugador.php';
         <input type="number" name="numero" id="Numero" min="1" max="99" required>
 
         <label for="capitan">Capitan</label>
-        <input type="checkbox" name="capitan" id="capitan" onclick="toggleCapitanCheckbox()">
+        <input type="checkbox" name="capitan" id="capitan">
 
         <button type="submit">Crear</button>
     </form>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            function toggleCapitanCheckbox() {
-                var checkbox = document.getElementById("capitanCheckbox");
-                if (checkbox.checked) {
-                    checkbox.value = 1;
-                } else {
-                    checkbox.value = 0;
-                }
-            }
-        });
-    </script>
-
-
 
     <table>
         <thead>
@@ -107,6 +85,7 @@ require_once '../models/Jugador.php';
                 <th>Nombre</th>
                 <th>Ciudad</th>
                 <th>Numero</th>
+                <th>Capitan</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -117,6 +96,7 @@ require_once '../models/Jugador.php';
                     <td><?php echo $jugador['nombre']; ?></td>
                     <td><?php echo $jugador['ciudad']; ?></td>
                     <td><?php echo $jugador['numero']; ?></td>
+                    <td><?php echo $jugador['isCapitan'] ? 'Sí' : 'No'; ?></td>
                     <td>
                         <a href="../views/add_jugador.php?id=<?php echo $jugador['id']; ?>">Editar</a>
                         <a href="../equipo/eliminar_jugador.php?id=<?php echo $jugador['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este jugador?')">Eliminar</a>
@@ -128,5 +108,4 @@ require_once '../models/Jugador.php';
 
     <a href="../equipo/index.php">Volver</a>
 
-</body>
-</html>
+<?php include '../views/footer.php'; ?>

@@ -6,6 +6,8 @@ require_once '../equipo/config.php';
 require_once '../models/Equipo.php';
 require_once '../models/Jugador.php';
 
+include '../views/header.php';
+
     // Obtener el ID del equipo desde la URL
     $id = $_GET['id'];
 
@@ -65,8 +67,14 @@ require_once '../models/Jugador.php';
     <label for="numero">Numero:</label>
     <input type="number" name="numero" id="Numero"  value="<?php echo $jugadorObj->getNumero(); ?>" required>
 
+    <label for="numero">Capitan:</label>
+    <input type="checkbox" name="capitan" id="capitan"  value="<?php echo $jugadorObj->getCapitan(); ?>">
+
     <input type="hidden" name="equipo" id="equipo"  value="<?php echo $jugadorObj->getEquipo(); ?>">
 
     <button type="submit">Editar</button>
 </form>
 
+<a href="../views/informacion.php?id=<?php echo $jugador['id']; ?>">Volver</a>
+
+<?php include '../views/footer.php'; ?>
