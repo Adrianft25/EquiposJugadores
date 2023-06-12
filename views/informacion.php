@@ -56,27 +56,30 @@ include '../views/header.php';
 
     ?>
 
-    <h1>Información del Equipo</h1>
+    <h2>Información del Equipo</h2>
 
-    <h2>Listado de Jugadores</h2>
+    <h3>Listado de Jugadores</h3>
 
-    <h2>Crear Jugador</h2>
+    <div class="formulario">
+        <h3>Crear Jugador</h3>
 
-    <form id="jugadorForm" method="POST">
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" required>
+        <form id="jugadorForm" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required>
 
-        <label for="ciudad">Ciudad:</label>
-        <input type="text" name="ciudad" id="ciudad">
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" name="ciudad" id="ciudad">
 
-        <label for="numero">Numero:</label>
-        <input type="number" name="numero" id="Numero" min="1" max="99" required>
+            <label for="numero">Numero:</label>
+            <input type="number" name="numero" id="Numero" min="1" max="99" required>
 
-        <label for="capitan">Capitan</label>
-        <input type="checkbox" name="capitan" id="capitan">
+            <label for="capitan">Capitan</label>
+            <input type="checkbox" name="capitan" id="capitan">
 
-        <button type="submit">Crear</button>
-    </form>
+            <button type="submit">Crear</button>
+        </form>
+    </div>
+    
 
     <table>
         <thead>
@@ -106,6 +109,6 @@ include '../views/header.php';
         </tbody>
     </table>
 
-    <a href="../equipo/index.php">Volver</a>
+    <a class="btn-volver" href="../equipo/index.php">Volver</a>
 
 <?php include '../views/footer.php'; ?>

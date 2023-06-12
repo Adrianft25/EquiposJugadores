@@ -1,41 +1,86 @@
-body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
+h1 {
+  text-align: center;
+}
+
+.formulario {
+  width: 25vw;
+  min-width: 300px;
+  margin: auto;
+  border: 1px solid rgb(116 167 239);
+  padding: 2.5em;
+  background-color: rgb(116 167 239 / 30%);
+  border-radius: 8px;
+}
+
+.formulario h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.formulario input{
+    margin-bottom: 1em;
+}
+
+.formulario button{
+    background-color: rgb(75, 105, 236);
+    width: fit-content;
+    padding: 1em 2em;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-color: rgb(48, 68, 159);
+    border-radius: 8px;
+    border-width: 1px;
+    margin-inline: auto;
+    border-style: solid;
+    margin-top: 1em;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.formulario button:hover{
+    background-color: rgb(145, 75, 236);
+    border-color: rgb(66, 32, 110);
+    border-radius: 4px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 thead {
-    background-color: #f2f2f2;
-  }
-  
-  thead th {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
+  background-color: #f2f2f2;
+}
 
-  }
-  
-  
-  tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  tbody tr:hover {
-    background-color: #e0e0e0;
-  }
-  
-  tbody td {
-    padding: 8px;
-  }
-  
-  tbody td:first-child {
-    border-left: 1px solid #ccc;
-  }
-  
-  tbody td:last-child {
-    border-right: 1px solid #ccc;
-  }
+thead th {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+tbody td {
+  padding: 8px;
+}
+
+tbody td:first-child {
+  border-left: 1px solid #ccc;
+}
+
+tbody td:last-child {
+  border-right: 1px solid #ccc;
+}

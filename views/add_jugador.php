@@ -20,11 +20,13 @@ include '../views/header.php';
         $jugadorObj->setNombre($jugador['nombre']);
         $jugadorObj->setCiudad($jugador['ciudad']);
         $jugadorObj->setNumero($jugador['numero']);
+        $jugadorObj->setCapitan($jugador['isCapitan']);
         $jugadorObj->setEquipo($jugador['equipo']);
 
         echo "<h2>Nombre: " . $jugadorObj->getNombre() . "</h2>";
         echo "<p>Ciudad: " . $jugadorObj->getCiudad() . "</p>";
-        echo "<p>Numero: " . $jugadorObj->getNumero() . "</p>"; 
+        echo "<p>Número: " . $jugadorObj->getNumero() . "</p>"; 
+        echo "<p>Capitán: " . ($jugadorObj->getCapitan() ? 'Sí' : 'No') . "</p>"; 
         echo "<p>Equipo: " . $jugadorObj->getEquipo() . "</p>";
 
     } else {
@@ -38,6 +40,7 @@ include '../views/header.php';
         $ciudad = $_POST['ciudad'];
         $numero = $_POST['numero'];
         $equipo = $_POST['equipo'];
+        $isCapitan = $_POST['isCapitan'];
 
         // Crear el nuevo equipo
         $j = new Jugador($pdo);
@@ -45,8 +48,9 @@ include '../views/header.php';
         $j->setNombre($nombre);
         $j->setCiudad($ciudad);
         $j->setNumero($numero);
+        $j->setCapitan($isCapitan);
 
-        $j->update($nombre, $ciudad, $numero);
+        $j->update($nombre, $ciudad, $numero, $isCapitan);
 
         // Redireccionar a la página de inicio
         header('Location: ../views/informacion.php?id=' . $equipo);
@@ -55,26 +59,28 @@ include '../views/header.php';
     
 
     ?>
+<div class="formulario">
+    <h2>Editar Jugador</h2>
+    <form id="jugadorForm" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" value="<?php echo $jugadorObj->getNombre(); ?>" required>
 
-<h2>Editar Jugador</h2>
-<form id="jugadorForm" method="POST">
-    <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" id="nombre" value="<?php echo $jugadorObj->getNombre(); ?>" required>
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" name="ciudad" id="ciudad"  value="<?php echo $jugadorObj->getCiudad(); ?>">
 
-    <label for="ciudad">Ciudad:</label>
-    <input type="text" name="ciudad" id="ciudad"  value="<?php echo $jugadorObj->getCiudad(); ?>">
+        <label for="numero">Numero:</label>
+        <input type="number" name="numero" id="Numero"  value="<?php echo $jugadorObj->getNumero(); ?>" required>
 
-    <label for="numero">Numero:</label>
-    <input type="number" name="numero" id="Numero"  value="<?php echo $jugadorObj->getNumero(); ?>" required>
+        <label for="isCapitan">Capitan:</label>
+        <input type="checkbox" name="isCapitan" id="isCapitan"  <?php echo ($jugadorObj->getCapitan() ? "checked" : ""); ?>>
 
-    <label for="numero">Capitan:</label>
-    <input type="checkbox" name="capitan" id="capitan"  value="<?php echo $jugadorObj->getCapitan(); ?>">
+        <input type="hidden" name="equipo" id="equipo"  value="<?php echo $jugadorObj->getEquipo(); ?>">
 
-    <input type="hidden" name="equipo" id="equipo"  value="<?php echo $jugadorObj->getEquipo(); ?>">
+        <button type="submit">Editar</button>
+    </form>
+</div>
 
-    <button type="submit">Editar</button>
-</form>
 
-<a href="../views/informacion.php?id=<?php echo $jugador['id']; ?>">Volver</a>
+<a class="btn-volver" href="../views/informacion.php?id=<?php echo $jugador['equipo']; ?>">Volver</a>
 
 <?php include '../views/footer.php'; ?>
