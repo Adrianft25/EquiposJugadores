@@ -48,6 +48,8 @@ include '../views/header.php';
 
 <?php
         $jugadores = $equipoObj->getJugadores($pdo, $id);
+        $capitanes = $equipoObj->getCapitanes($pdo, $id);
+
     } else {
         echo "<p>Equipo no encontrado.</p>";
     }
@@ -126,6 +128,28 @@ include '../views/header.php';
                             <a class="btn-eliminar" href="../equipo/eliminar_jugador.php?id=<?php echo $jugador['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este jugador?')">Eliminar</a>
                         </div>
                     </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    
+    <h2>Listado de Capitanes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Ciudad</th>
+                <th>Número</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($capitanes as $capitan) : ?>
+                <tr>
+                    <td><?php echo $capitan['id']; ?></td>
+                    <td><?php echo $capitan['nombre']; ?></td>
+                    <td><?php echo $capitan['ciudad']; ?></td>
+                    <td><?php echo $capitan['numero']; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

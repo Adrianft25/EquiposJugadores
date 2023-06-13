@@ -32,6 +32,13 @@ class Equipo {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    // Obtener capitanes por equipo
+    public function getCapitanes($pdo, $id) {
+        $stmt = $pdo->prepare('SELECT * FROM jugadores WHERE equipo = ? AND isCapitan = 1');
+        $stmt->execute([$id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     // Guardar un nuevo equipo en la base de datos
     public function save() {
         $stmt = $this->pdo->prepare('INSERT INTO equipos (id, nombre, ciudad, deporte, descripcion, fecha) VALUES (?, ?, ?, ?, ?, ?)');
