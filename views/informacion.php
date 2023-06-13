@@ -25,23 +25,33 @@ include '../views/header.php';
             <h2>Información del Equipo</h2>
             <div class="row">
                 <span class="label">Nombre</span>
-                <span class="value"><?php echo $equipoObj->getNombre(); ?></span>
+                <div class="value">
+                    <span><?php echo $equipoObj->getNombre(); ?></span>
+                </div>
             </div>
             <div class="row">
                 <span class="label">Ciudad</span>
-                <span class="value"><?php echo $equipoObj->getCiudad(); ?></span>
+                <div class="value">
+                    <span><?php echo $equipoObj->getCiudad(); ?></span>
+                </div>
             </div>
             <div class="row">
                 <span class="label">Deporte</span>
-                <span class="value"><?php echo $equipoObj->getDeporte(); ?></span>
+                <div class="value">
+                    <span><?php echo $equipoObj->getDeporte(); ?></span>
+                </div>
             </div>
             <div class="row">
                 <span class="label">Descripción</span>
-                <span class="value"><?php echo $equipoObj->getDescripcion(); ?></span>
+                <div class="value">
+                    <span><?php echo $equipoObj->getDescripcion(); ?></span>            
+                </div>
             </div>
             <div class="row">
                 <span class="label">Fecha de Creación</span>
-                <span class="value"><?php echo $equipoObj->getFecha(); ?></span>
+                <div class="value">
+                    <span><?php echo $equipoObj->getFecha(); ?></span>
+                </div>
             </div>
         </div>
 
@@ -103,57 +113,57 @@ include '../views/header.php';
     
     <h2>Listado de Jugadores</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Ciudad</th>
-                <th>Número</th>
-                <th>Capitán</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="table">
+        <div class="thead">
+            <div class="tr-6">
+                <div class="th">ID</div>
+                <div class="th">Nombre</div>
+                <div class="th">Ciudad</div>
+                <div class="th">Número</div>
+                <div class="th">Capitán</div>
+                <div class="th">Acciones</div>
+            </div>
+        </div>
+        <div class="tbody">
             <?php foreach ($jugadores as $jugador) : ?>
-                <tr>
-                    <td><?php echo $jugador['id']; ?></td>
-                    <td><?php echo $jugador['nombre']; ?></td>
-                    <td><?php echo $jugador['ciudad']; ?></td>
-                    <td><?php echo $jugador['numero']; ?></td>
-                    <td><?php echo $jugador['isCapitan'] ? 'Sí' : 'No'; ?></td>
-                    <td>
+                <div class="tr-6">
+                    <div class="td"><?php echo $jugador['id']; ?></div>
+                    <div class="td"><?php echo $jugador['nombre']; ?></div>
+                    <div class="td"><?php echo $jugador['ciudad']; ?></div>
+                    <div class="td"><?php echo $jugador['numero']; ?></div>
+                    <div class="td"><?php echo $jugador['isCapitan'] ? 'Sí' : 'No'; ?></div>
+                    <div class="td">
                         <div class="botones">
                             <a class="btn-editar" href="../views/add_jugador.php?id=<?php echo $jugador['id']; ?>">Editar</a>
                             <a class="btn-eliminar" href="../equipo/eliminar_jugador.php?id=<?php echo $jugador['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este jugador?')">Eliminar</a>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             <?php endforeach; ?>
-        </tbody>
-    </table>
+        </div>
+    </div>
     
     <h2>Listado de Capitanes</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Ciudad</th>
-                <th>Número</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="table">
+        <div class="thead">
+            <div class="tr-4">
+                <div class="th">ID</div>
+                <div class="th">Nombre</div>
+                <div class="th">Ciudad</div>
+                <div class="th">Número</div>
+            </div>
+        </div>
+        <div class="tbody">
             <?php foreach ($capitanes as $capitan) : ?>
-                <tr>
-                    <td><?php echo $capitan['id']; ?></td>
-                    <td><?php echo $capitan['nombre']; ?></td>
-                    <td><?php echo $capitan['ciudad']; ?></td>
-                    <td><?php echo $capitan['numero']; ?></td>
-                </tr>
+                <div class="tr-4">
+                    <div class="td"><?php echo $capitan['id']; ?></div>
+                    <div class="td"><?php echo $capitan['nombre']; ?></div>
+                    <div class="td"><?php echo $capitan['ciudad']; ?></div>
+                    <div class="td"><?php echo $capitan['numero']; ?></div>
+                </div>
             <?php endforeach; ?>
-        </tbody>
-    </table>
+        </div>
+    </div>
 
     <a class="btn-volver" href="../equipo/index.php">Volver</a>
 
