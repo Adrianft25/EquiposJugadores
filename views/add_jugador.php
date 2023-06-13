@@ -22,13 +22,33 @@ include '../views/header.php';
         $jugadorObj->setNumero($jugador['numero']);
         $jugadorObj->setCapitan($jugador['isCapitan']);
         $jugadorObj->setEquipo($jugador['equipo']);
+?>
 
-        echo "<h2>Nombre: " . $jugadorObj->getNombre() . "</h2>";
-        echo "<p>Ciudad: " . $jugadorObj->getCiudad() . "</p>";
-        echo "<p>Número: " . $jugadorObj->getNumero() . "</p>"; 
-        echo "<p>Capitán: " . ($jugadorObj->getCapitan() ? 'Sí' : 'No') . "</p>"; 
-        echo "<p>Equipo: " . $jugadorObj->getEquipo() . "</p>";
+        <div class="card">
+            <h2>Información del Jugador</h2>
+            <div class="row">
+                <span class="label">Nombre</span>
+                <span class="value"><?php echo $jugadorObj->getNombre(); ?></span>
+            </div>
+            <div class="row">
+                <span class="label">Ciudad</span>
+                <span class="value"><?php echo $jugadorObj->getCiudad(); ?></span>
+            </div>
+            <div class="row">
+                <span class="label">Número</span>
+                <span class="value"><?php echo $jugadorObj->getNumero(); ?></span>
+            </div>
+            <div class="row">
+                <span class="label">Capitán</span>
+                <span class="value"><?php echo ($jugadorObj->getCapitan() ? 'Sí' : 'No'); ?></span>
+            </div>
+            <div class="row">
+                <span class="label">Equipo</span>
+                <span class="value"><?php echo $jugadorObj->getEquipo(); ?></span>
+            </div>
+        </div>
 
+<?php
     } else {
         echo "<p>Equipo no encontrado.</p>";
     }
@@ -62,18 +82,20 @@ include '../views/header.php';
 <div class="formulario">
     <h2>Editar Jugador</h2>
     <form id="jugadorForm" method="POST">
-        <label for="nombre">Nombre:</label>
+        <label for="nombre">Nombre</label>
         <input type="text" name="nombre" id="nombre" value="<?php echo $jugadorObj->getNombre(); ?>" required>
 
-        <label for="ciudad">Ciudad:</label>
+        <label for="ciudad">Ciudad</label>
         <input type="text" name="ciudad" id="ciudad"  value="<?php echo $jugadorObj->getCiudad(); ?>">
 
-        <label for="numero">Numero:</label>
+        <label for="numero">Número</label>
         <input type="number" name="numero" id="Numero"  value="<?php echo $jugadorObj->getNumero(); ?>" required>
 
-        <label for="isCapitan">Capitan:</label>
-        <input type="checkbox" name="isCapitan" id="isCapitan"  <?php echo ($jugadorObj->getCapitan() ? "checked" : ""); ?>>
-
+        <div class="capi">
+            <input type="checkbox" name="isCapitan" id="isCapitan"  <?php echo ($jugadorObj->getCapitan() ? "checked" : ""); ?>>
+            <label for="isCapitan">Capitán</label>
+        </div>
+        
         <input type="hidden" name="equipo" id="equipo"  value="<?php echo $jugadorObj->getEquipo(); ?>">
 
         <button type="submit">Editar</button>

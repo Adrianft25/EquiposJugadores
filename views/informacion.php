@@ -19,13 +19,34 @@ include '../views/header.php';
         $equipoObj->setDeporte($equipo['deporte']);
         $equipoObj->setDescripcion($equipo['descripcion']);
         $equipoObj->setFecha($equipo['fecha']);
+?>
 
-        echo "<h2>Nombre: " . $equipoObj->getNombre() . "</h2>";
-        echo "<p>Ciudad: " . $equipoObj->getCiudad() . "</p>";
-        echo "<p>Deporte: " . $equipoObj->getDeporte() . "</p>";
-        echo "<p>Descripcion: " . $equipoObj->getDescripcion() . "</p>";
-        echo "<p>Fecha de Creación: " . $equipoObj->getFecha() . "</p>";
+        <div class="card">
+            <h2>Información del Equipo</h2>
+            <div class="row">
+                <span class="label">Nombre</span>
+                <span class="value"><?php echo $equipoObj->getNombre(); ?></span>
+            </div>
+            <div class="row">
+                <span class="label">Ciudad</span>
+                <span class="value"><?php echo $equipoObj->getCiudad(); ?></span>
+            </div>
+            <div class="row">
+                <span class="label">Deporte</span>
+                <span class="value"><?php echo $equipoObj->getDeporte(); ?></span>
+            </div>
+            <div class="row">
+                <span class="label">Descripción</span>
+                <span class="value"><?php echo $equipoObj->getDescripcion(); ?></span>
+            </div>
+            <div class="row">
+                <span class="label">Fecha de Creación</span>
+                <span class="value"><?php echo $equipoObj->getFecha(); ?></span>
+            </div>
+        </div>
 
+
+<?php
         $jugadores = $equipoObj->getJugadores($pdo, $id);
     } else {
         echo "<p>Equipo no encontrado.</p>";
@@ -56,30 +77,29 @@ include '../views/header.php';
 
     ?>
 
-    <h2>Información del Equipo</h2>
-
-    <h3>Listado de Jugadores</h3>
-
     <div class="formulario">
-        <h3>Crear Jugador</h3>
+        <h2>Crear Jugador</h2>
 
         <form id="jugadorForm" method="POST">
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" required>
 
-            <label for="ciudad">Ciudad:</label>
+            <label for="ciudad">Ciudad</label>
             <input type="text" name="ciudad" id="ciudad">
 
-            <label for="numero">Numero:</label>
+            <label for="numero">Número</label>
             <input type="number" name="numero" id="Numero" min="1" max="99" required>
-
-            <label for="capitan">Capitan</label>
-            <input type="checkbox" name="capitan" id="capitan">
-
+            
+            <div class="capi">
+                <input type="checkbox" name="capitan" id="capitan">
+                <label for="capitan">Capitán</label>
+            </div>
+       
             <button type="submit">Crear</button>
         </form>
     </div>
     
+    <h2>Listado de Jugadores</h2>
 
     <table>
         <thead>
@@ -87,8 +107,8 @@ include '../views/header.php';
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Ciudad</th>
-                <th>Numero</th>
-                <th>Capitan</th>
+                <th>Número</th>
+                <th>Capitán</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -101,8 +121,10 @@ include '../views/header.php';
                     <td><?php echo $jugador['numero']; ?></td>
                     <td><?php echo $jugador['isCapitan'] ? 'Sí' : 'No'; ?></td>
                     <td>
-                        <a href="../views/add_jugador.php?id=<?php echo $jugador['id']; ?>">Editar</a>
-                        <a href="../equipo/eliminar_jugador.php?id=<?php echo $jugador['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este jugador?')">Eliminar</a>
+                        <div class="botones">
+                            <a class="btn-editar" href="../views/add_jugador.php?id=<?php echo $jugador['id']; ?>">Editar</a>
+                            <a class="btn-eliminar" href="../equipo/eliminar_jugador.php?id=<?php echo $jugador['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este jugador?')">Eliminar</a>
+                        </div>
                     </td>
                 </tr>
             <?php endforeach; ?>

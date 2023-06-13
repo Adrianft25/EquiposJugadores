@@ -17,7 +17,7 @@ $equipos = $equipo->getAll($pdo);
             <th>Nombre</th>
             <th>Ciudad</th>
             <th>Deporte</th>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Fecha de Fundación</th>
             <th>Acciones</th>
         </tr>
@@ -32,7 +32,7 @@ $equipos = $equipo->getAll($pdo);
                 <td><?php echo $equipo['deporte']; ?></td>
                 <td><?php echo $equipo['descripcion']; ?></td>
                 <td><?php echo $equipo['fecha']; ?></td>
-                <td><a href="<?php echo "../views/informacion.php?id=" . $equipo['id']; ?>">Ver</a></td>
+                <td><a class="btn-ver" href="<?php echo "../views/informacion.php?id=" . $equipo['id']; ?>">Ver</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
