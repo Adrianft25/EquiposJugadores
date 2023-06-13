@@ -111,8 +111,10 @@ include '../views/header.php';
         </form>
     </div>
     
-    <h2>Listado de Jugadores</h2>
+    <?php if (count($jugadores) > 0) { ?>
 
+    <h2>Listado de Jugadores</h2>
+    
     <div class="table">
         <div class="thead">
             <div class="tr-6">
@@ -142,7 +144,9 @@ include '../views/header.php';
             <?php endforeach; ?>
         </div>
     </div>
+    <?php } 
     
+    if (count($capitanes) > 0) {?>
     <h2>Listado de Capitanes</h2>
     <div class="table">
         <div class="thead">
@@ -164,6 +168,8 @@ include '../views/header.php';
             <?php endforeach; ?>
         </div>
     </div>
+    
+    <?php } ?>
 
     <a class="btn-volver" href="../equipo/index.php">Volver</a>
 
