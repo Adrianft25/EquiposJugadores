@@ -11,12 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if ($jugador) {
         // Eliminar el jugador
-        //$jugador->deleteById();
         Jugador::deleteById($pdo, $jugadorId);
     }
 
     // Redireccionar a la página de información del equipo
-    header('Location: ../equipo/index.php');
+    header('Location: ../views/informacion.php?id=' . $jugador['equipo']);
     exit();
 } else {
     // Si se intenta acceder a este archivo de otra manera que no sea a través de una solicitud GET, redireccionar a la página de inicio
